@@ -6,7 +6,7 @@ const camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHe
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
-camera.position.z= 100;
+camera.position.z= 1;
 var i = 0;
 let loaders = ["super_human/scene.gltf", "pack4/scene.gltf"];
 function inti(){
@@ -20,10 +20,11 @@ document.getElementById("3").onclick = function() {
   while(scene.children.length > 0){ 
     scene.remove(scene.children[0]); 
   }
-  inti();
-  if(i == 2){
-    camera.position.z = 20
+  if(i == 1){
+    camera.position.z = 70;
+    
   }
+  inti();
   i++;
 }
 
