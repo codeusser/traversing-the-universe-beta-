@@ -1,4 +1,3 @@
-
 const loader = new THREE.GLTFLoader();
 scene = new THREE.Scene();
 const color3 = new THREE.Color("rgb(216,	216,	230)");
@@ -7,7 +6,7 @@ const camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHe
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
-camera.position.z= 70;
+camera.position.z= 1;
 var i = 0;
 let loaders = ["super_human/scene.gltf", "pack4/scene.gltf"];
 function inti(){
@@ -22,17 +21,12 @@ document.getElementById("3").onclick = function() {
     scene.remove(scene.children[0]); 
   }
 
-  inti();
   if(i == 1){
     camera.position.z = 70;
     
   }
-  if(i == 0){
-   
-   
-  }
-  
-  
+  inti();
+  i++;
 }
 
 function animate(){
