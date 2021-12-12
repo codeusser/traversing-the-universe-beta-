@@ -8,8 +8,11 @@ renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
 camera.position.z= 1;
 var i = 0;
+var _y = 0;
+var _z = 0;
 let loaders = ["super_human/scene.gltf", "pack4/scene.gltf"];
-function inti(){
+function inti(u,t){
+ 
 loader.load(loaders[i], function(gltf){
   car = gltf.scene.children[0];
   car.scale.set(0.5,0.5,0.5);
@@ -25,14 +28,18 @@ document.getElementById("3").onclick = function() {
     camera.position.z = 70;
     
   }
-  inti();
+  _y+=0.1;
+  _z+= 0.1;
+  inti(_z,_y);
+  
   i++;
 }
+
 
 function animate(){
     requestAnimationFrame(animate);
     renderer.render(scene,camera);
-    console.log(i)
+    
 
 }
 
