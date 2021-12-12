@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <script src="https://cdn.tailwindcss.com"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,34 +13,32 @@
         }
         .container{
             position: absolute;
-            top: 60%;
-            left: 10%;
-            width: 100%;
-            height: 100%;
-            
+            bottom: 30%;
         }
-        button{
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-right: 60px;
-            background-color:#FFFFFF;
-            border-radius: 20%;
-        }
+        
+        
+        
+        
        
 
     
         </style>
     </head>
         <body>
-            <div class="container">
-                <button id="3" type="button">Latex</button>
+            <div>
+                <canvas id="canvas"></canvas>
+
             </div>
+           <div class="container">
+                <button>nice</button>
+           </div>
+
             <script type="module" src="/node_modules/gsap/index.js"></script>
             <script src="/javas/build/three.js"></script>
             <script src="javas/build/three.min.js"></script>
             <script src="GLTFLoader.js"></script>
             <script src="main.js"></script>
-            <script src="javas/examples/jsm/controls/OrbitControls.js"></script>
+            <script type="module" src="javas/examples/jsm/controls/OrbitControls.js"></script>
             
         </body>
 </html>
