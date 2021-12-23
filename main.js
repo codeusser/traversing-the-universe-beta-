@@ -6,7 +6,9 @@ front-end-dev: Nistor Vlad -> codeusser
 
 copyrights reservd. Double Tech 
 */
-
+var goback = false;
+var enteredearh = Boolean(0);
+var eneredinsun = Boolean(0)
 var marimesoare = 2
 var marimesoare1 = 20;
 var marimesoare2 = 20;
@@ -92,7 +94,10 @@ function addGlobe(){
 function addSun(){
   scene.add(sun);
 }
-
+function sleep() {
+  setTimeout(function() {
+  }, 1000);
+}
 function animate(){
   sphere.rotation.y += 0.001
   requestAnimationFrame(animate);
@@ -103,15 +108,16 @@ function animate(){
       hovered = true;
     });
     if(hovered){
-      animateStars(10);
       scene.remove(sphere);
       scene.remove(sun)
       scene.remove(pamant)
+      animateStars(10);
+      
     }else{
     animateStars(1000);
     addGlobe()
     }
-    if(explored && counted % 2 == 0){
+    if(explored && counted % 2 == 0 && !hovered){
       main = Boolean(0)
       sun.position.x = 10
       pamant.position.x = -10;
@@ -119,7 +125,7 @@ function animate(){
       scene.add(pamant)
       scene.remove(sphere);
       test.innerText = "Back to main"
-    }else if(explored && counted % 2 == 1 ){
+    }else if(explored && counted % 2 == 1 && !hovered){
       test.innerText = "Explore";
       main = true
       scene.remove(sun);
@@ -130,6 +136,47 @@ function animate(){
     if(counted == 1423552352){
       counted = 0;
     }
+    addEventListener('mousemove', (event) => {
+
+      //console.log(event.clientX, " ", event.clientY)
+       if(!main){
+         if(event.clientX >= 1205 && event.clientX <= 1342 && event.clientY >=415 &&
+           event.clientY <= 537){
+             eneredinsun = true;
+             enteredearh = false;
+             goback = false;
+           }
+         else if(event.clientY >=415 && event.clientY <= 537 && event.clientX >= 577 &&
+           event.clientX <= 715){
+            enteredearh = true;
+            goback = false;
+            eneredinsun = false;
+         }
+         else{
+           eneredinsun = false;
+           enteredearh = false;
+           goback = true;
+         }
+       }
+     })
+     if(eneredinsun && camera.position.x < 10){
+       camera.position.x += 0.1;
+     }
+     if((eneredinsun && camera.position.z > 8) || (enteredearh && camera.position.z > 8)){
+       camera.position.z -= .1;
+     }
+     if(enteredearh && camera.position.x > -10){
+       camera.position.x -= 0.1;
+     }
+     if(goback && camera.position.x < 0){
+       camera.position.x += 0.1;
+     }
+     if(goback && camera.position.x > 0){
+       camera.position.x -= .1;
+     }
+     if(goback && camera.position.z < 20){
+       camera.position.z += .1;
+     }
 }
 
 test.addEventListener("click", function( event ){
@@ -140,25 +187,7 @@ test.addEventListener("click", function( event ){
 test.addEventListener('mouseleave', e => {
   hovered = false;
 });
-addEventListener('mousemove', (event) => {
- console.log(event.clientX, " ", event.clientY)
-  if(!main){
-    if(event.clientX >= 1205 && event.clientX <= 1342 && event.clientY >=415 &&
-      event.clientY <= 537){
-        camera.position.x = 10;
-        camera.position.z =  8
-      }
-    else if(event.clientY >=415 && event.clientY <= 537 && event.clientX >= 577 &&
-      event.clientX <= 715){
-        camera.position.x = -10;
-        camera.position.z = 8;
-    }
-    else{
-      camera.position.x = 0;
-      camera.position.z = 20;
-    }
-  }
-})
+
 
 addSphere();
 animate();
