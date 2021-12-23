@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <script src="https://cdn.tailwindcss.com"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> somehting very cool</title>
         <style>
          body{
+             overflow: hidden;
             padding: 0px;
             margin: 0px;
-        }
-        .container{
-            position: absolute;
-            bottom: 30%;
-        }
+         }
+
         
-        
-        
+
+          
+            #canvas {
+                
+                top:0; 
+                left:0;
+            }
+            .button1{
+                position: absolute;
+                background-color: black;
+                bottom: 40%;
+                left: 10%;
+                size: 40%;
+            }
+            
         
        
 
@@ -25,14 +35,11 @@
         </style>
     </head>
         <body>
-            <div>
-                <canvas id="canvas"></canvas>
-
+            
+             <canvas id="canvas"></canvas>
+           <div class="button1">
+           <button id = "EXPLORE">this is nice :)</button>
             </div>
-           <div class="container">
-                <button>nice</button>
-           </div>
-
             <script type="module" src="/node_modules/gsap/index.js"></script>
             <script src="/javas/build/three.js"></script>
             <script src="javas/build/three.min.js"></script>
