@@ -117,7 +117,7 @@ function animate(){
     animateStars(1000);
     addGlobe()
     }
-    if(explored && counted % 2 == 0 && !hovered){
+    if(explored && counted % 2 == 1 && !hovered){
       main = Boolean(0)
       sun.position.x = 10
       pamant.position.x = -10;
@@ -125,7 +125,7 @@ function animate(){
       scene.add(pamant)
       scene.remove(sphere);
       test.innerText = "Back to main"
-    }else if(explored && counted % 2 == 1 && !hovered){
+    }else if(explored && counted % 2 == 0 && !hovered){
       test.innerText = "Explore";
       main = true
       scene.remove(sun);
@@ -162,7 +162,7 @@ function animate(){
      if(eneredinsun && camera.position.x < 10){
        camera.position.x += 0.1;
      }
-     if((eneredinsun && camera.position.z > 8) || (enteredearh && camera.position.z > 8)){
+     if((eneredinsun && camera.position.z > 7) || (enteredearh && camera.position.z > 8)){
        camera.position.z -= .1;
      }
      if(enteredearh && camera.position.x > -10){
